@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZ9-BZ-pop">
-                                <rect key="frame" x="27.666666666666671" y="582" width="60" height="30"/>
+                                <rect key="frame" x="27.666666666666671" y="590" width="60" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Q4i-od-JPW"/>
@@ -48,7 +48,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c61-sC-9oK">
-                                <rect key="frame" x="157.66666666666666" y="582" width="60" height="30"/>
+                                <rect key="frame" x="157.66666666666666" y="590" width="60" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="5oy-yS-Shy"/>
@@ -59,7 +59,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxV-bg-VNE">
-                                <rect key="frame" x="287.66666666666669" y="582" width="60" height="30"/>
+                                <rect key="frame" x="287.66666666666669" y="590" width="60" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="wIK-Pe-6nk"/>
@@ -79,7 +79,7 @@
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Game" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIN-hG-hXa" userLabel="Message">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose New Game" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIN-hG-hXa" userLabel="Message">
                                 <rect key="frame" x="27.666666666666657" y="246" width="320" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="mga-ww-TEF"/>
@@ -114,7 +114,7 @@
                             <constraint firstItem="QRE-7J-cd4" firstAttribute="top" secondItem="7cc-be-Z3y" secondAttribute="bottom" id="aQI-4q-0CY"/>
                             <constraint firstItem="c61-sC-9oK" firstAttribute="centerY" secondItem="kZ9-BZ-pop" secondAttribute="centerY" id="cxC-lI-jhp"/>
                             <constraint firstItem="wIN-hG-hXa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eEK-uO-Q25"/>
-                            <constraint firstItem="kZ9-BZ-pop" firstAttribute="top" secondItem="QRE-7J-cd4" secondAttribute="bottom" constant="16" id="irP-8K-y60"/>
+                            <constraint firstItem="kZ9-BZ-pop" firstAttribute="top" secondItem="QRE-7J-cd4" secondAttribute="bottom" constant="24" id="irP-8K-y60"/>
                             <constraint firstItem="QRE-7J-cd4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mPO-Wc-5Fe"/>
                             <constraint firstItem="QRE-7J-cd4" firstAttribute="leading" secondItem="TZe-ht-u5R" secondAttribute="leading" id="o3D-7W-rBc"/>
                             <constraint firstItem="H0j-3y-5md" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ocO-gj-EKm"/>

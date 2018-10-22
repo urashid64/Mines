@@ -22,7 +22,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnRestart: UIButton!
     @IBOutlet weak var lblMessage: UILabel!
     
-    var isGameOver = false
+    // Initial state = No game
+    var isGameOver = true
     
     var timer = Timer()
     var isTimerPaused = false
@@ -205,6 +206,12 @@ class ViewController: UIViewController {
             // Show all squares with mines
             board.showMines()
         }
+        // Game is successfully completed when all squares
+        // (except those with mines) have been revealed
+        else if board.squaresRemaining == board.mines {
+            gameOver(message: .Success)
+        }
+        // else nothing
 
         // Redraw the board
         refreshBoard()
@@ -226,6 +233,7 @@ class ViewController: UIViewController {
         .Done:     ("💥", UIColor.white),   // Color is ignored for this
         ]
     
+    // Update all squares and square count
     func refreshBoard ()
     {
         // Show contents of revealed squares
@@ -242,12 +250,6 @@ class ViewController: UIViewController {
         
         // Update count of un-revealed squares
         squareCount.text = String(board.squaresRemaining)
-        
-        // Game is successfully completed when all squares
-        // (except those with mines) have been revealed
-        if board.squaresRemaining == board.mines {
-            gameOver(message: .Success)
-        }
     }
     
     enum StatusMessage: String {
@@ -321,14 +323,12 @@ class ViewController: UIViewController {
             btnPlayPause.setTitle("Resume", for: .normal)
             timer.invalidate()
             showStatus (message: .Paused)
-//            lblMessage.fadeIn()
         }
         else {
             isTimerPaused = false
             btnPlayPause.setTitle("Pause", for: .normal)
             runTimer()
             hideStatusMessage()
-//            lblMessage.fadeOut()
         }
     }
 }
