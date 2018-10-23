@@ -123,6 +123,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="jg4-2z-tbe" appends="YES" id="Mae-Js-ERl"/>
+                            <outletCollection property="gestureRecognizers" destination="5vX-zW-ef3" appends="YES" id="4Gw-hy-Yo1"/>
                         </connections>
                     </view>
                     <connections>
@@ -142,8 +143,14 @@
                         <outlet property="delegate" destination="QRE-7J-cd4" id="gkF-bN-szr"/>
                     </connections>
                 </tapGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="5vX-zW-ef3">
+                    <connections>
+                        <action selector="onLongPress:" destination="BYZ-38-t0r" id="O4v-v4-RsM"/>
+                        <outlet property="delegate" destination="QRE-7J-cd4" id="7ae-8y-Q75"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="116.25" y="117.25352112676056"/>
+            <point key="canvasLocation" x="84" y="78"/>
         </scene>
     </scenes>
 </document>

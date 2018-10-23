@@ -216,7 +216,57 @@ class ViewController: UIViewController {
         // Redraw the board
         refreshBoard()
     }
-
+    
+    
+    @IBAction func onLongPress(_ sender: UILongPressGestureRecognizer)
+    {
+        // Only handle taps inside the container while the game is still active
+        if isGameOver ||
+            isTimerPaused ||
+            container.point(inside: sender.location(in: container), with: nil) == false {
+            print ("gmae over || timer paused || outside")
+            return
+        }
+        
+        let rows = board.rows
+        let cols = board.cols
+        let width  = (container.frame.width  - (cols+1) * margin) / cols
+        let height = (container.frame.height - (rows+1) * margin) / rows
+        
+        let row = Int((sender.location(in: container)).y / (height + margin))
+        let col = Int((sender.location(in: container)).x / (width + margin))
+        print ("long press: row = \(row), col = \(col), tag = \(row * cols + col + 1000)")
+        
+        // Only flag squares that haven't been revealed
+        if board[row,col].isRevealed() {
+            return
+        }
+        
+        if sender.state == .ended {
+            // If the square already has a label, remove it
+            if let label = container.viewWithTag(row * cols + col + 1000) as? UILabel {
+                label.removeFromSuperview()
+            }
+            else {
+                // Create the overlay label
+                let x = margin + (width  + margin) * col
+                let y = margin + (height + margin) * row
+                let label = UILabel()
+                label.frame = CGRect(x:x, y:y, width:width, height:height)
+                label.font = UIFont(name: "AmericanTypewriter-Bold", size: 24)
+                label.adjustsFontSizeToFitWidth = true
+                label.numberOfLines = 1
+                label.textAlignment = NSTextAlignment.center
+                label.baselineAdjustment = .alignCenters
+                label.tag = row * cols + col + 1000
+                label.text = "🚩"
+                label.isHidden = false
+                container.addSubview(label)
+            }
+        }
+    }
+    
+    
     // Display attributes for squares based on
     // their value (mine, neighbor count etc.)
     let BoardAttrs: [GameSquare.Value : (String, UIColor)] = [
