@@ -25,6 +25,10 @@
                                     <constraint firstAttribute="height" constant="320" id="1VT-Rc-AXo"/>
                                     <constraint firstAttribute="width" constant="320" id="yJy-Lk-dcm"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="jg4-2z-tbe" appends="YES" id="kIs-at-0zY"/>
+                                    <outletCollection property="gestureRecognizers" destination="5vX-zW-ef3" appends="YES" id="FGC-iI-osJ"/>
+                                </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZe-ht-u5R" userLabel="PlayClock">
                                 <rect key="frame" x="27.666666666666671" y="205" width="81" height="41"/>
@@ -42,6 +46,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Q4i-od-JPW"/>
                                 </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" title="New"/>
                                 <connections>
                                     <action selector="onBtnNew:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RI6-c9-2OS"/>
@@ -53,6 +58,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="5oy-yS-Shy"/>
                                 </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" title="Pause"/>
                                 <connections>
                                     <action selector="togglePausePlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fdb-OB-qij"/>
@@ -64,6 +70,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="wIK-Pe-6nk"/>
                                 </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" title="Restart"/>
                                 <connections>
                                     <action selector="onBtnRestart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e2w-Kv-MeD"/>
@@ -121,10 +128,6 @@
                             <constraint firstItem="QRE-7J-cd4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="p7W-j7-qFo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="jg4-2z-tbe" appends="YES" id="Mae-Js-ERl"/>
-                            <outletCollection property="gestureRecognizers" destination="5vX-zW-ef3" appends="YES" id="4Gw-hy-Yo1"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="btnNew" destination="kZ9-BZ-pop" id="vF5-Xg-L8c"/>
@@ -143,7 +146,7 @@
                         <outlet property="delegate" destination="QRE-7J-cd4" id="gkF-bN-szr"/>
                     </connections>
                 </tapGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="5vX-zW-ef3">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.34999999999999998" id="5vX-zW-ef3">
                     <connections>
                         <action selector="onLongPress:" destination="BYZ-38-t0r" id="O4v-v4-RsM"/>
                         <outlet property="delegate" destination="QRE-7J-cd4" id="7ae-8y-Q75"/>

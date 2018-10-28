@@ -176,11 +176,9 @@ class ViewController: UIViewController {
     
     @IBAction func tap(_ sender: UITapGestureRecognizer)
     {
-        // Only handle taps inside the container while the game is still active
-        if isGameOver ||
-            isTimerPaused ||
-            container.point(inside: sender.location(in: container), with: nil) == false {
-            print ("gmae over || timer paused || outside")
+        // Only handle taps while the game is active
+        if isGameOver || isTimerPaused  {
+            print ("gmae over || timer paused")
             return
         }
 
@@ -220,11 +218,9 @@ class ViewController: UIViewController {
     
     @IBAction func onLongPress(_ sender: UILongPressGestureRecognizer)
     {
-        // Only handle taps inside the container while the game is still active
-        if isGameOver ||
-            isTimerPaused ||
-            container.point(inside: sender.location(in: container), with: nil) == false {
-            print ("gmae over || timer paused || outside")
+        // Only handle taps while the game is active
+        if isGameOver || isTimerPaused  {
+            print ("gmae over || timer paused")
             return
         }
         
