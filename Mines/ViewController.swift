@@ -70,54 +70,46 @@ class ViewController: UIViewController {
                                             message: "Choose a board",
                                             preferredStyle: .actionSheet)
 
-        let game6x6 = UIAlertAction(title: "6 x 6 (5 Mines)",
+        ctrlNewGame.addAction (UIAlertAction(title: "6 x 6 (5 Mines)",
                                     style: .default,
                                     handler: {(action) -> Void in
-                                        self.board = Board(rows: 6, cols: 6, mines: 5)
-                                        self.board.reset()
-                                        self.startNewGame()
-        })
+                                        self.startNewGame(rows: 6, cols: 6, mines: 5)
+        }))
 
-        let  game8x8 = UIAlertAction(title: "8 x 8 (10 Mines)",
+        ctrlNewGame.addAction (UIAlertAction(title: "8 x 8 (10 Mines)",
                                      style: .default,
                                      handler: {(action) -> Void in
-                                        self.board = Board(rows: 8, cols: 8, mines: 10)
-                                        self.board.reset()
-                                        self.startNewGame()
-        })
+                                        self.startNewGame(rows: 8, cols: 8, mines: 10)
+        }))
 
-        let  game10x10 = UIAlertAction(title: "10 x 10 (15 Mines)",
+        ctrlNewGame.addAction (UIAlertAction(title: "10 x 10 (15 Mines)",
                                      style: .destructive,
                                      handler: {(action) -> Void in
-                                        self.board = Board(rows: 10, cols: 10, mines: 15)
-                                        self.board.reset()
-                                        self.startNewGame()
-        })
+                                        self.startNewGame(rows: 10, cols: 10, mines: 15)
+        }))
         
-        let gameCancel = UIAlertAction(title: "Cancel",
+        ctrlNewGame.addAction (UIAlertAction(title: "Cancel",
                                        style: .cancel,
                                        handler: {(action) -> Void in
                                         print("Cancel button tapped")
-        })
-
-        ctrlNewGame.addAction(game6x6)
-        ctrlNewGame.addAction(game8x8)
-        ctrlNewGame.addAction(game10x10)
-        ctrlNewGame.addAction(gameCancel)
+        }))
 
         self.present(ctrlNewGame, animated: true, completion: nil)
     }
 
 
     @IBAction func onBtnRestart(_ sender: Any) {
-        // Reset game board (no change to rows, cols, mines)
-        board.reset()
-        startNewGame()
+        // Restart game with the same board (no change to rows, cols, mines)
+        startNewGame(rows: board.rows, cols: board.cols, mines: board.mines)
     }
     
     // Set up and start a game with given parameters
-    func startNewGame()
+    func startNewGame(rows: Int, cols: Int, mines: Int)
     {
+        // Set up board
+        board = Board(rows: rows, cols: cols, mines: mines)
+        board.reset()
+
         // Reset game parameters
         timer.invalidate()
         isTimerPaused = false
@@ -138,8 +130,6 @@ class ViewController: UIViewController {
         }
 
         // Create labels for squares
-        let rows = board.rows
-        let cols = board.cols
         let width  = (container.frame.width  - (cols+1) * margin) / cols
         let height = (container.frame.height - (rows+1) * margin) / rows
 
