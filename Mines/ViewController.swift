@@ -56,6 +56,7 @@ class ViewController: UIViewController {
         btnRestart.layer.cornerRadius = 5
         btnRestart.layer.borderWidth = 1
         btnRestart.layer.borderColor = UIColor.lightGray.cgColor
+        // Only enable after the game starts
         btnRestart.isEnabled = false
     }
 
@@ -66,33 +67,25 @@ class ViewController: UIViewController {
     
     @IBAction func onBtnNew(_ sender: UIButton)
     {
-        let ctrlNewGame = UIAlertController(title: "Start New Game",
-                                            message: "Choose a board",
-                                            preferredStyle: .actionSheet)
+        let ctrlNewGame = UIAlertController (title: "Start New Game",
+                                             message: "Choose a board",
+                                             preferredStyle: .actionSheet)
 
-        ctrlNewGame.addAction (UIAlertAction(title: "6 x 6 (5 Mines)",
-                                    style: .default,
-                                    handler: {(action) -> Void in
-                                        self.startNewGame(rows: 6, cols: 6, mines: 5)
-        }))
+        ctrlNewGame.addAction (UIAlertAction (title: "6 x 6 (5 Mines)", style: .default,
+                                              handler: { (action) -> Void in
+                                                self.startNewGame (rows: 6, cols: 6, mines: 5)}))
 
-        ctrlNewGame.addAction (UIAlertAction(title: "8 x 8 (10 Mines)",
-                                     style: .default,
-                                     handler: {(action) -> Void in
-                                        self.startNewGame(rows: 8, cols: 8, mines: 10)
-        }))
+        ctrlNewGame.addAction (UIAlertAction (title: "8 x 8 (10 Mines)", style: .default,
+                                              handler: { (action) -> Void in
+                                                self.startNewGame(rows: 8, cols: 8, mines: 10)}))
 
-        ctrlNewGame.addAction (UIAlertAction(title: "10 x 10 (15 Mines)",
-                                     style: .destructive,
-                                     handler: {(action) -> Void in
-                                        self.startNewGame(rows: 10, cols: 10, mines: 15)
-        }))
-        
-        ctrlNewGame.addAction (UIAlertAction(title: "Cancel",
-                                       style: .cancel,
-                                       handler: {(action) -> Void in
-                                        print("Cancel button tapped")
-        }))
+        ctrlNewGame.addAction (UIAlertAction (title: "10 x 10 (15 Mines)", style: .destructive,
+                                              handler: { (action) -> Void in
+                                                self.startNewGame(rows: 10, cols: 10, mines: 15)}))
+
+        ctrlNewGame.addAction (UIAlertAction (title: "Cancel", style: .cancel,
+                                              handler: { (action) -> Void in
+                                                print("Cancel button tapped")}))
 
         self.present(ctrlNewGame, animated: true, completion: nil)
     }
@@ -160,7 +153,7 @@ class ViewController: UIViewController {
         btnPlayPause.isEnabled = true
         
         // Start the Play Clock
-        runTimer()
+        runPlayClock()
     }
 
     
@@ -168,7 +161,7 @@ class ViewController: UIViewController {
     {
         // Only handle taps while the game is active
         if isGameOver || isTimerPaused  {
-            print ("gmae over || timer paused")
+            print ("game over || timer paused")
             return
         }
 
@@ -210,7 +203,7 @@ class ViewController: UIViewController {
     {
         // Only handle taps while the game is active
         if isGameOver || isTimerPaused  {
-            print ("gmae over || timer paused")
+            print ("game over || timer paused")
             return
         }
         
@@ -326,7 +319,7 @@ class ViewController: UIViewController {
         lblMessage.fadeOut()
     }
     
-    func runTimer()
+    func runPlayClock()
     {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                      selector: (#selector(self.updatePlayClock)),
@@ -341,17 +334,12 @@ class ViewController: UIViewController {
             gameOver(message: .Timeout)
         }
         else {
-            lblPlayClock.text = timeString(time: TimeInterval(playTime))
+            let minutes = playTime / 60 % 60
+            let seconds = playTime % 60
+            lblPlayClock.text = String(format:"%02i:%02i", minutes, seconds)
         }
     }
-    
-    func timeString(time: TimeInterval) -> String
-    {
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        return String(format:"%02i:%02i", minutes, seconds)
-    }
-    
+
     @IBAction func togglePausePlay(_ sender: UIButton)
     {
         if isTimerPaused == false {
@@ -363,7 +351,7 @@ class ViewController: UIViewController {
         else {
             isTimerPaused = false
             btnPlayPause.setTitle("Pause", for: .normal)
-            runTimer()
+            runPlayClock()
             hideStatusMessage()
         }
     }
