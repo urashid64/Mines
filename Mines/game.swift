@@ -209,7 +209,7 @@ class Board
         // If the square is empty, show its neighbors too
         if location.isEmpty() {
             for square in neighbors(for: location) {
-                _ = show(row: square.row, col: square.col) // Ignore return value
+                show(row: square.row, col: square.col) // Ignore return value
             }
         }
     }
