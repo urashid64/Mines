@@ -44,13 +44,7 @@ class GameSquare {
         self.value = .Empty
         self.show = false
     }
-    
-    // Add a mine to the square
-    func setMine() -> Void
-    {
-        self.value = .Mine
-    }
-    
+
     // Calculate number of mines in an empty squares neighbors
     func setCount(with neighbors: [GameSquare]) -> Void
     {
@@ -179,7 +173,7 @@ class Board
 
             // Only place a mine if the random location is empty
             if (self[row, col].isEmpty()) {
-                self[row, col].setMine()
+                self[row, col].value = .Mine
                 count += 1
             }
         }
