@@ -172,7 +172,7 @@ class ViewController: UIViewController {
         
         let row = Int((sender.location(in: container)).y / (height + margin))
         let col = Int((sender.location(in: container)).x / (width + margin))
-        print ("row = \(row), col = \(col), tag = \(row * cols + col + 1)")
+        print ("       tap: row = \(row), col = \(col), tag = \(row * cols + col + 1)")
 
         // Reveal the tapped square
         board.show (row: row, col: col)
@@ -214,17 +214,22 @@ class ViewController: UIViewController {
         
         let row = Int((sender.location(in: container)).y / (height + margin))
         let col = Int((sender.location(in: container)).x / (width + margin))
-        print ("long press: row = \(row), col = \(col), tag = \(row * cols + col + 1000)")
         
         // Only flag squares that haven't been revealed
-        if board[row,col].isRevealed() {
-            return
-        }
+//        if board[row,col].isRevealed() {
+//            return
+//        }
         
         if sender.state == .ended {
+            print ("long press: row = \(row), col = \(col), tag = \(row * cols + col + 1000)")
+
             // If the square already has a label, remove it
             if let label = container.viewWithTag(row * cols + col + 1000) as? UILabel {
                 label.removeFromSuperview()
+            }
+            // Only add flag to squares that haven't been revealed
+            else if board[row,col].isRevealed() {
+                return
             }
             else {
                 // Create the overlay label
